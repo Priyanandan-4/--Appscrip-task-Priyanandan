@@ -1,95 +1,117 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Header from "@/components/header/header"
+
+import ProductGrid from "@/components/product-grid/product-grid"
+import styles from "./page.module.css"
+import Script from "next/script"
+import ProductFilters from "@/components/product-filters/product-filters"
+import Footer from "@/components/footer/footer"
+
+export const metadata = {
+  title: "Discover Our Products | Premium Handcrafted Collection | MetaShop",
+  description:
+    "Browse our curated collection of handcrafted products. Find unique backpacks, accessories, and toys made by skilled artisans with sustainable materials.",
+}
 
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <>
+      <Header />
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <div className="container">
+          <section className={styles.heroSection}>
+            <h1 className={styles.pageTitle}>DISCOVER OUR PRODUCTS</h1>
+            <p className={styles.pageDescription}>
+            Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus <br/>scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor.
+            </p>
+          </section>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          <section className={styles.productsSection}>
+            <div className={styles.productsContainer}>
+              <ProductFilters />
+              <ProductGrid />
+            </div>
+          </section>
+
+       
         </div>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      <Footer/>
+
+      {/* Structured Data for Product List */}
+      <Script
+        id="product-list-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@type": "Product",
+                  name: "Prado Mulvany Dress Backpack",
+                  image: "https://example.com/images/prado-mulvany-dress-backpack.jpg",
+                  description: "Handcrafted backpack made from sustainable materials",
+                  brand: {
+                    "@type": "Brand",
+                    name: "MetaShop",
+                  },
+                  offers: {
+                    "@type": "Offer",
+                    availability: "https://schema.org/InStock",
+                    price: "129.99",
+                    priceCurrency: "USD",
+                  },
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@type": "Product",
+                  name: "Handcrafted Toy Dinosaur",
+                  image: "https://example.com/images/handcrafted-toy-dinosaur.jpg",
+                  description: "Eco-friendly children's toy made from natural materials",
+                  brand: {
+                    "@type": "Brand",
+                    name: "MetaShop",
+                  },
+                  offers: {
+                    "@type": "Offer",
+                    availability: "https://schema.org/OutOfStock",
+                    price: "39.99",
+                    priceCurrency: "USD",
+                  },
+                },
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* Structured Data for Organization */}
+      <Script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "MetaShop",
+            url: "https://metashop.example.com",
+            logo: "https://metashop.example.com/images/logo.png",
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+44-221-133-5360",
+              contactType: "customer service",
+              email: "customercare@metashop.com",
+            },
+            sameAs: ["https://www.instagram.com/metashop", "https://www.linkedin.com/company/metashop"],
+          }),
+        }}
+      />
+    </>
+  )
 }

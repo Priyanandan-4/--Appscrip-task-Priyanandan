@@ -1,0 +1,128 @@
+.productGridSection {
+    width: 100%;
+  }
+  
+  .productGridHeader {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .sortDropdown {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+  
+  .sortLabel {
+    font-weight: 500;
+  }
+  
+  .productGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .productCard {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .productImageContainer {
+    position: relative;
+    margin-bottom: 1rem;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .productLink {
+    display: block;
+    height: 100%;
+  }
+  
+  .newBadge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    z-index: 1;
+  }
+  
+  .outOfStockBadge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: #ffd700;
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    z-index: 1;
+  }
+  
+  .favoriteButton {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    background-color: white;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    transition: transform 0.2s;
+  }
+  
+  .favoriteButton:hover {
+    transform: scale(1.1);
+  }
+  
+  .favoriteActive svg {
+    fill: var(--accent-color);
+    stroke: var(--accent-color);
+  }
+  
+  .productName {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  
+  .productPrice {
+    font-size: 0.75rem;
+    color: var(--medium-gray);
+  }
+  
+  @media (max-width: 992px) {
+    .productGrid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .productGrid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  
+    .productImageContainer {
+      aspect-ratio: 4 / 3;
+    }
+  }
+  
