@@ -1,7 +1,7 @@
 import Link from "next/link";
-
-import styles from "./footer.module.css";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import styles from "./footer.module.css";
 
 export default function Footer() {
   return (
@@ -28,22 +28,24 @@ export default function Footer() {
           {/* Second column */}
           <div className={styles.footerColumn}>
             <h2 className={styles.footerHeading}>CONTACT US</h2>
-            <p className={styles.footerText}>+44 221 133 5360</p>
-            <p className={styles.footerText}>customercare@metamuse.com</p>
+            <div className={styles.contactRow}>
+              <p className={styles.footerText}>+44 221 133 5360</p>
+              <p className={styles.footerText}>customercare@metamuse.com</p>
+            </div>
 
             <h2 className={styles.footerHeading}>CURRENCY</h2>
             <div className={styles.currencySelector}>
               <Image
                 width={200}
                 height={200}
-                src="/images/american-flag.jpg" // or your desired image
+                src="/images/american-flag.jpg"
                 alt="currency flag"
                 className={styles.currencyImage}
               />
               <span>USD</span>
             </div>
 
-            <p className={styles.footerSmallText}>
+            <p className={`${styles.footerSmallText} ${styles.currencyNote}`}>
               Transactions will be completed in Euros and a currency conversion
               will be applied at checkout.
             </p>
@@ -52,7 +54,9 @@ export default function Footer() {
 
         <div className={styles.footerLinks}>
           <div className={styles.linksColumn}>
-            <h3 className={styles.linksHeading}>metaà muse</h3>
+            <h3 className={styles.linksHeading}>
+              metaà muse <ChevronDown size={16} className={styles.toggleIcon} />
+            </h3>
             <ul className={styles.linksList}>
               <li>
                 <Link href="/about">About us</Link>
@@ -75,7 +79,9 @@ export default function Footer() {
             </ul>
           </div>
           <div className={styles.linksColumn}>
-            <h3 className={styles.linksHeading}>QUICK LINKS</h3>
+            <h3 className={styles.linksHeading}>
+              QUICK LINKS <ChevronDown size={16} className={styles.toggleIcon} />
+            </h3>
             <ul className={styles.linksList}>
               <li>
                 <Link href="/orders-shipping">Orders & Shipping</Link>
@@ -101,7 +107,9 @@ export default function Footer() {
             </ul>
           </div>
           <div className={styles.footerColumn}>
-            <h2 className={styles.footerHeading}>FOLLOW US</h2>
+            <h2 className={styles.footerHeading}>
+              FOLLOW US <ChevronDown size={16} className={styles.toggleIcon} />
+            </h2>
             <div className={styles.socialLinks}>
               <Link
                 href="https://linkedin.com"
@@ -130,7 +138,6 @@ export default function Footer() {
                   className={styles.paymentImage}
                 />
               </div>
-
               <div className={styles.paymentMethod} aria-label="Mastercard">
                 <Image
                   src="/icons/creditcard.svg"

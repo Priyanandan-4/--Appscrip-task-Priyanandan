@@ -41,7 +41,7 @@
 
 @media (max-width: 768px) {
   .productsContainer {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
   }
 
   .pageTitle {
