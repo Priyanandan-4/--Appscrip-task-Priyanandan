@@ -1,16 +1,16 @@
-import Header from "@/components/header/header"
-
-import ProductGrid from "@/components/product-grid/product-grid"
-import styles from "./page.module.css"
-import Script from "next/script"
-import ProductFilters from "@/components/product-filters/product-filters"
-import Footer from "@/components/footer/footer"
+import Header from "@/components/header/header";
+import { Suspense } from "react";
+import ProductGrid from "@/components/product-grid/product-grid";
+import styles from "./page.module.css";
+import Script from "next/script";
+import ProductFilters from "@/components/product-filters/product-filters";
+import Footer from "@/components/footer/footer";
 
 export const metadata = {
   title: "Discover Our Products | Premium Handcrafted Collection | MetaShop",
   description:
     "Browse our curated collection of handcrafted products. Find unique backpacks, accessories, and toys made by skilled artisans with sustainable materials.",
-}
+};
 
 export default function Home() {
   return (
@@ -21,21 +21,24 @@ export default function Home() {
           <section className={styles.heroSection}>
             <h1 className={styles.pageTitle}>DISCOVER OUR PRODUCTS</h1>
             <p className={styles.pageDescription}>
-            Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus <br/>scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor.
+              Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus <br />
+              scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor.
             </p>
           </section>
 
           <section className={styles.productsSection}>
             <div className={styles.productsContainer}>
-              <ProductFilters />
-              <ProductGrid />
+              <Suspense fallback={<div>Loading filters...</div>}>
+                <ProductFilters />
+              </Suspense>
+              <Suspense fallback={<div>Loading products...</div>}>
+                <ProductGrid />
+              </Suspense>
             </div>
           </section>
-
-       
         </div>
       </main>
-      <Footer/>
+      <Footer />
 
       {/* Structured Data for Product List */}
       <Script
@@ -113,5 +116,5 @@ export default function Home() {
         }}
       />
     </>
-  )
+  );
 }
